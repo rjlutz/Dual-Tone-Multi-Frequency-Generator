@@ -3,8 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/DjMadd/NetBeansProjects/dsp/src/com/mukandi/dtmf/dsp/AudioDispatcher.java</file>
-            <file>file:/Users/DjMadd/NetBeansProjects/dsp/src/com/mukandi/dtmf/gui/dtmf_gui.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/gui/dspS/Dtmf_GUI.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/goertzel/AudioFloatConverter.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/dsp/AudioDispatcher.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/gui/dtmf_gui.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/pitch/dsp/DTMF.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/dsp/BlockingAudioPlayer.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/pitch/dsp/Goertzel.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/pitch/dsp/NewClass.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/goertzel/DTMF.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/sergio/dsp/AudioDispatcher.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/dsp/FloatConverter.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/mukandi/dtmf/goertzel/Goertzel.java</file>
+            <file>file:/Users/ggcstaff/NetBeansProjects/Dual-Tone-Multi-Frequency-Generator/DTMF_Detector/src/com/nigel/DTMF/sergio/dsp/AudioProcessor.java</file>
         </group>
     </open-files>
 </project-private>
