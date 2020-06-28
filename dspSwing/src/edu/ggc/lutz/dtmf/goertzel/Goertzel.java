@@ -62,7 +62,7 @@ public class Goertzel implements AudioProcessor {
 	 * 
 	 * @author Joren Six
 	 */
-	public static interface FrequenciesDetectedHandler {
+	public interface FrequenciesDetectedHandler {
 		/**
 		 * React on detected frequencies.
 		 * 
@@ -77,7 +77,7 @@ public class Goertzel implements AudioProcessor {
 		 */
 		void handleDetectedFrequencies(final double[] frequencies,
 				final double[] powers, final double[] allFrequencies,
-				final double allPowers[]);
+				final double... allPowers);
 	}
 
 	@Override
@@ -85,12 +85,11 @@ public class Goertzel implements AudioProcessor {
 		double skn0, skn1, skn2;
 		int numberOfDetectedFrequencies = 0;
 		for (int j = 0; j < frequenciesToDetect.length; j++) {
-			skn0 = skn1 = skn2 = 0;
-			for (int i = 0; i < audioFloatBuffer.length; i++) {
+			skn0 = skn1 = 0;
+			for (float v : audioFloatBuffer) {
 				skn2 = skn1;
 				skn1 = skn0;
-				skn0 = precalculatedCosines[j] * skn1 - skn2
-						+ audioFloatBuffer[i];
+				skn0 = precalculatedCosines[j] * skn1 - skn2 + v;
 			}
 			double wnk = precalculatedWnk[j];
 			calculatedPowers[j] = 20 * Math.log10(Math.abs(skn0 - wnk * skn1));
