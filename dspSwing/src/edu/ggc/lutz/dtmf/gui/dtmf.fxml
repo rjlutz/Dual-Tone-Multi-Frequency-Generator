@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="edu.ggc.lutz.dtmf.gui.Dtmf"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
+<!--</AnchorPane>-->
+
+<GridPane alignment="CENTER" hgap="50.0" onKeyPressed="#handleKeyPressed" prefHeight="302" prefWidth="400" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ggc.lutz.dtmf.gui.Controller">
+
+   <children>
+       <Label text="0.697 kHz" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="0" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+       <Label text="0.770 kHZ" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+       <Label text="0.852 kHz" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+       <Label text="0.941 kHz" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+       <Label text="1.209 kHz" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+       <Label text="1.336 kHz" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+       <Label text="1.477 kHz" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+       <Label text="1.633 kHz" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+       
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
