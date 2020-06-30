@@ -8,6 +8,7 @@ import edu.ggc.lutz.dtmf.goertzel.DTMF;
 import edu.ggc.lutz.dtmf.goertzel.Goertzel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyEvent;
 
@@ -17,6 +18,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Controller {
@@ -24,23 +26,23 @@ public class Controller {
     private final int stepSize = 256;
 
     @FXML
-    //private ProgressBar bar0;
     private List<ProgressBar> bars;
 
     @FXML
+    private Label detectedKeyLabel;
+
+    @FXML
     private void handleKeyPressed(KeyEvent ke){
-        System.out.println("Key Pressed: " + ke.getCode());
+        if (! (ke.getText().length() > 0))
+            return;
 
         char c = ke.getText().charAt(0);
-        System.out.println("char: " + c);
-
         if (DTMF.isDTMFCharacter(c))
             try {
                 process(c);
             } catch (UnsupportedAudioFileException | LineUnavailableException e) {
                 e.printStackTrace();
             }
-
     }
 
     public void process(char character) throws UnsupportedAudioFileException, LineUnavailableException {
@@ -62,6 +64,7 @@ public class Controller {
         public void handleDetectedFrequencies(final double[] frequencies, final double[] powers, final double[] allFrequencies, final double allPowers[]) {
             if (frequencies.length != 2) return;
             int row = -1, col = -1;
+
             for (int i = 0; i < 4; i++) // note doesn't work if 3 or more tones are present
                 if (frequencies[0] == DTMF.DTMF_FREQUENCIES[i] || frequencies[1] == DTMF.DTMF_FREQUENCIES[i]) {
                     row = i;
@@ -74,10 +77,8 @@ public class Controller {
 
             if (row == -1 && col == -1) return;
 
-            //labels[9].setText("" + DTMF.DTMF_CHARACTERS[row][col]);
-            System.out.print("" + DTMF.DTMF_CHARACTERS[row][col]);
-            //for (int i = 0; i < bars.length; i++)
-                //bars[i].setValue((int) allPowers[i]);
+            final String detected =
+                    String.valueOf(DTMF.DTMF_CHARACTERS[row][col]);
 
             Platform.runLater(new Runnable() {
                 @Override public void run() {
@@ -89,15 +90,9 @@ public class Controller {
                         color = (allPowers[i]>Goertzel.POWER_THRESHOLD) ? "forestgreen" : "gray";
                         bar.setStyle("-fx-accent: "+ color +";");
                     }
+                    detectedKeyLabel.setText(detected);
                 }
             });
-
-            for (double intensity : allPowers)
-                System.out.print(" " + intensity);
-            System.out.println("\n");
-
-
         }
     });
-
 }

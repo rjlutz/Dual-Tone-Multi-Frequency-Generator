@@ -31,7 +31,9 @@
        <Label text="1.633 kHz" GridPane.columnIndex="0" GridPane.rowIndex="7" />
        <ProgressBar fx:id="bar7" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 
-       <!-- use a define block to define an array list containing the labels: -->
+       <Label text="Key Detected" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+       <Label fx:id="detectedKeyLabel" text="Press Dial Pad" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
        <fx:define>
            <ArrayList fx:id="bars">
                <fx:reference source="bar0" />
@@ -46,8 +48,6 @@
        </fx:define>
 
    </children>
-
-
 
    <columnConstraints>
       <ColumnConstraints />
