@@ -6,7 +6,9 @@ import edu.ggc.lutz.dtmf.dsp.BlockingAudioPlayer;
 import edu.ggc.lutz.dtmf.goertzel.AudioFloatConverter;
 import edu.ggc.lutz.dtmf.goertzel.DTMF;
 import edu.ggc.lutz.dtmf.goertzel.Goertzel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyEvent;
 
 import javax.sound.sampled.AudioFormat;
@@ -14,10 +16,16 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
     private final int stepSize = 256;
+
+    @FXML
+    //private ProgressBar bar0;
+    private List<ProgressBar> bars;
 
     @FXML
     private void handleKeyPressed(KeyEvent ke){
@@ -54,7 +62,7 @@ public class Controller {
         public void handleDetectedFrequencies(final double[] frequencies, final double[] powers, final double[] allFrequencies, final double allPowers[]) {
             if (frequencies.length != 2) return;
             int row = -1, col = -1;
-            for (int i = 0; i < 4; i++) // note work if 3 or more tones are present
+            for (int i = 0; i < 4; i++) // note doesn't work if 3 or more tones are present
                 if (frequencies[0] == DTMF.DTMF_FREQUENCIES[i] || frequencies[1] == DTMF.DTMF_FREQUENCIES[i]) {
                     row = i;
                     for (int j = 4; j < DTMF.DTMF_FREQUENCIES.length; j++)
@@ -70,9 +78,25 @@ public class Controller {
             System.out.print("" + DTMF.DTMF_CHARACTERS[row][col]);
             //for (int i = 0; i < bars.length; i++)
                 //bars[i].setValue((int) allPowers[i]);
+
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    for (int i = 0; i < bars.size(); i++) {
+                        ProgressBar bar = bars.get(i);
+                        double value = Math.max(allPowers[i] / 100.0D, 0); // clamp at 0, no negatives
+                        bar.setProgress(value);
+                        String color;
+                        color = (allPowers[i]>Goertzel.POWER_THRESHOLD) ? "forestgreen" : "gray";
+                        bar.setStyle("-fx-accent: "+ color +";");
+                    }
+                }
+            });
+
             for (double intensity : allPowers)
                 System.out.print(" " + intensity);
             System.out.println("\n");
+
+
         }
     });
 
